@@ -1,65 +1,94 @@
-import Image from "next/image";
+const milestones = [
+  "项目初始化",
+  "Supabase 建库",
+  "客户列表页",
+  "新增与编辑客户",
+  "客户详情与沟通记录",
+  "火山引擎 AI 分析",
+  "异常兜底",
+  "角色权限设计",
+  "Vercel 部署",
+  "作品集包装",
+];
+
+const foundations = [
+  "Next.js 16 + React 19 + TypeScript",
+  "Supabase Postgres 保存客户与跟进数据",
+  "火山引擎 API 输出客户分析与销售话术",
+  "Vercel 部署形成可演示作品",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#f6f3ed] text-[#1f2933]">
+      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-10 sm:px-8 lg:px-10">
+        <nav className="flex items-center justify-between border-b border-[#d8c7a6] pb-5 text-sm">
+          <span className="font-semibold tracking-[0.18em] text-[#7c5d2f]">
+            FROZEN B2B AI CRM
+          </span>
+          <span className="rounded-full border border-[#9fb8c4] bg-white/70 px-4 py-2 text-[#41616f]">
+            第 1 单元：项目初始化
+          </span>
+        </nav>
+
+        <div className="grid flex-1 items-center gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p className="mb-4 text-sm font-semibold text-[#b05f2c]">
+              冷冻产品 B 端销售场景
+            </p>
+            <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-[#16212a] sm:text-5xl">
+              冷冻产品B端客户线索管理 AI CRM
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#52616b]">
+              这是一个面向 AI 产品/解决方案岗位的企业级项目原型。系统会逐步完成客户线索管理、
+              Supabase 数据持久化、火山引擎 AI 客户分析、销售话术输出和作品集文档沉淀。
+            </p>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {foundations.map((item) => (
+                <div
+                  className="border-l-4 border-[#2d7a78] bg-white/75 px-4 py-3 shadow-sm"
+                  key={item}
+                >
+                  <p className="text-sm font-medium text-[#26343d]">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border border-[#d9c8a9] bg-white p-6 shadow-[12px_12px_0_#d9e3df]">
+            <h2 className="text-xl font-bold text-[#16212a]">分阶段验收路线</h2>
+            <p className="mt-2 text-sm leading-6 text-[#66727b]">
+              每完成一个页面或功能，先确认可用，再进入下一步。
+            </p>
+
+            <ol className="mt-6 space-y-3">
+              {milestones.map((milestone, index) => (
+                <li className="flex items-center gap-3" key={milestone}>
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                      index === 0
+                        ? "bg-[#2d7a78] text-white"
+                        : "bg-[#edf1ef] text-[#627178]"
+                    }`}
+                  >
+                    {index + 1}
+                  </span>
+                  <span
+                    className={`text-sm ${
+                      index === 0
+                        ? "font-semibold text-[#1d3338]"
+                        : "text-[#52616b]"
+                    }`}
+                  >
+                    {milestone}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
